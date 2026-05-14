@@ -869,7 +869,9 @@ Trigger pull request tests for external contributors by:
 * .github/release-please.yml - Creates GitHub releases
 * .github/ISSUE_TEMPLATE - templates for GitHub issues
 
-### How-to Release an npm Package
+### How-to Release the npm Package
+
+MCP Toolbox is available as an npm package: [@toolbox-sdk/server](https://www.npmjs.com/package/@toolbox-sdk/server). To release a new version, follow these steps:
 
 **Pre-requisites**
 
@@ -926,7 +928,8 @@ Once all platform-specific packages are live, release the main wrapper package.
    ```bash
    npm install --package-lock-only
    ```
-   _Ensure that a node module entry for each package is present in `package-lock.json`._
+   1. Ensure that a node module entry for each package is present in `package-lock.json`.
+   2. Ensure that the integrity hashes for all packages are updated. If not, delete the file and use the `Sync Lockfile` command to generate a new lockfile.
 4. **Pack and Publish:**
    ```bash
    npm pack .
@@ -937,6 +940,9 @@ Once all platform-specific packages are live, release the main wrapper package.
 **Committing changes to the repo**
 
 Once all packages have been successfully published, please create a Pull Request containing the updated `package-lock.json` files from all `npm/` subdirectories. Ensure that any additional changes made during the release process are also included in this PR. Finally, set the title of the PR to: `chore(main): release npm vX.Y.Z`.
+
+> [!IMPORTANT]
+> Do not commit the binaries to the repo.
 
 **Troubleshooting**
 
